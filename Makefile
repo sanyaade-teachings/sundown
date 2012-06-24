@@ -19,9 +19,9 @@ DEPDIR=depends
 # "Machine-dependant" options
 #MFLAGS=-fPIC
 
-CFLAGS=-c -g -O3 -fPIC -Wall -Werror -Wsign-compare -Isrc -Ihtml
+CFLAGS=-c -g -O3 -fPIC -Wall -Wsign-compare -Isrc -Ihtml
 LDFLAGS=-g -O3 -Wall -Werror 
-CC=gcc
+CC=emcc
 
 
 SUNDOWN_SRC=\
@@ -63,7 +63,7 @@ src/html_blocks.h: html_block_names.txt
 
 # housekeeping
 clean:
-	rm -f src/*.o html/*.o examples/*.o
+	rm -f src/*.o html/*.o examples/*.o *.js *.bc
 	rm -f libsundown.so libsundown.so.1 sundown smartypants
 	rm -f sundown.exe smartypants.exe
 	rm -rf $(DEPDIR)
