@@ -23,43 +23,31 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define READ_UNIT 1024
-#define OUTPUT_UNIT 64
+// http://drj11.wordpress.com/2007/04/08/sizeofchar-is-1/
+char *str_to_html(const char *in) {
+  struct buf *ob;
 
-__attribute__((used))
-char * str_to_html(char * in) {
-	struct buf *ib, *ob;
+  struct sd_callbacks callbacks;
+  struct html_renderopt options;
+  struct sd_markdown *markdown;
 
-	struct sd_callbacks callbacks;
-	struct html_renderopt options;
-	struct sd_markdown *markdown;
+  // Use 2048 for block size.
+  ob = bufnew(2048);
 
-  const int in_length = strlen(in);
+  sdhtml_renderer(&callbacks, &options, 0);
+  /* Enable all extensions. */
+  markdown = sd_markdown_new(MKDEXT_NO_INTRA_EMPHASIS | MKDEXT_TABLES | MKDEXT_FENCED_CODE | MKDEXT_AUTOLINK | MKDEXT_STRIKETHROUGH | MKDEXT_SPACE_HEADERS | MKDEXT_SUPERSCRIPT | MKDEXT_LAX_SPACING, 16, &callbacks, &options);
 
-	/* reading everything */
-	ib = bufnew(in_length);
-	bufgrow(ib, in_length);
-  bufput(ib, in, in_length);
+  // Do not strlen + 1 or it will render incomplete markup.
+  sd_markdown_render(ob, (uint8_t*) in, strlen(in), markdown);
+  sd_markdown_free(markdown);
 
-	/* performing markdown parsing */
-	ob = bufnew(OUTPUT_UNIT);
+  // +1 for null termination of string.
+  char* html = malloc(ob->size + 1);
+  strcpy(html, bufcstr(ob));
 
-	sdhtml_renderer(&callbacks, &options, 0);
-	markdown = sd_markdown_new(0, 16, &callbacks, &options);
+  /* cleanup */  
+  bufrelease(ob);
 
-	sd_markdown_render(ob, ib->data, ib->size, markdown);
-	sd_markdown_free(markdown);
-
-  // Grab markdown data from output buffer's data char *
-  // store in new char * so when ob is released it's still
-  // valid.
-  char * markdown_data;
-  markdown_data = malloc(sizeof(char) * ob->size);
-  strncpy(markdown_data, (char *) ob->data, ob->size);
-
-	/* cleanup */  
-	bufrelease(ib);
-	bufrelease(ob);
-
-  return markdown_data;
+  return html;
 }

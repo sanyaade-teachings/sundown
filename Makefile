@@ -20,7 +20,7 @@ DEPDIR=depends
 #MFLAGS=-fPIC
 
 CFLAGS=-c -g -O3 -fPIC -Wall -Wsign-compare -Isrc -Ihtml
-LDFLAGS=-g -O3 -Wall -Werror 
+LDFLAGS=-g -O3 -Wall -Werror -s EXPORTED_FUNCTIONS="['_main', '_malloc', '_free', '_str_to_html']"
 CC=emcc
 
 
