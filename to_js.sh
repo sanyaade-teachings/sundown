@@ -6,7 +6,7 @@ echo "Generating bit code"
 make
 
 echo "Adding .bc extension to sundown"
-mv sundown sundown.bc
+mv libsundown.so sundown.bc
 
 echo "Converting sundown.bc "
 # emcc sundown.bc -o sundown_o0.js
