@@ -25,6 +25,7 @@ CC=emcc
 
 
 SUNDOWN_SRC=\
+	src/sundown.o \
 	src/markdown.o \
 	src/stack.o \
 	src/buffer.o \
