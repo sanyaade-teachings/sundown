@@ -35,8 +35,10 @@ char *str_to_html(const char *in) {
   ob = bufnew(2048);
 
   sdhtml_renderer(&callbacks, &options, 0);
-  /* Enable all extensions. */
-  markdown = sd_markdown_new(MKDEXT_NO_INTRA_EMPHASIS | MKDEXT_TABLES | MKDEXT_FENCED_CODE | MKDEXT_AUTOLINK | MKDEXT_STRIKETHROUGH | MKDEXT_SPACE_HEADERS | MKDEXT_SUPERSCRIPT | MKDEXT_LAX_SPACING, 16, &callbacks, &options);
+  /* Enable all extensions.
+     MKDEXT_SUPERSCRIPT breaks MathJax. (ex: 2^2)
+  */
+  markdown = sd_markdown_new(MKDEXT_NO_INTRA_EMPHASIS | MKDEXT_TABLES | MKDEXT_FENCED_CODE | MKDEXT_AUTOLINK | MKDEXT_STRIKETHROUGH | MKDEXT_SPACE_HEADERS | MKDEXT_LAX_SPACING, 16, &callbacks, &options);
 
   // Do not strlen + 1 or it will render incomplete markup.
   sd_markdown_render(ob, (uint8_t*) in, strlen(in), markdown);
