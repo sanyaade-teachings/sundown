@@ -21,3 +21,6 @@ emcc -O2 --minify 0 sundown.bc -o sundown_o2_m0.js
 
 echo "Removing whitespace (minify 1 is broken)"
 java -jar ./compiler-latest/compiler.jar --compilation_level WHITESPACE_ONLY --js sundown_o2_m0.js --js_output_file sundown_o2_wo.js
+
+mv sundown_o2_m0.js ./dist
+mv sundown_o2_wo.js ./dist

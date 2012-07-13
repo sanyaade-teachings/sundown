@@ -7,3 +7,5 @@ Emscripten, swig, and native branch are depreciated. The master branch now conta
 - Makefile.swig - SWIG
 
 Run `bash to_js.sh` to compile JavaScript version.
+
+Use latest emcc with latest [closure compiler](http://code.google.com/p/closure-compiler/downloads/list) in `emscripten/third_party/closure-compiler`.
