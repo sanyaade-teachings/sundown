@@ -19,8 +19,4 @@ echo "Converting sundown.bc "
 # emcc -O2 --closure 0 -s ASSERTIONS=1 sundown.bc -o sundown_o2_c0_a1.js
 # emcc -O2 -s ASSERTIONS=1 sundown.bc -o sundown_o2_a1.js
 
-emcc -O2 sundown.bc -o test.js --embed-file data.md
-
-echo "Saving JS output"
-node test.js data.md > output.js.html
-
+emcc -O2 sundown.bc -o test.js
