@@ -6,7 +6,7 @@ The master branch now contains all code and build files. Other branches are no l
 - Makefile.native - BridJ, mostly unmodified upstream makefile
 - Makefile.swig - SWIG
 
-`./to_js.sh` builds the emscripten library
+`./js.sh` builds the emscripten library
 `./native.sh` builds the native library and a test executable
 
 To increase the chance of a working emscripten build, use unmodified emcc with bundled closure.
