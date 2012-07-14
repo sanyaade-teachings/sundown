@@ -36,13 +36,18 @@ SUNDOWN_SRC=\
 	html/houdini_html_e.o \
 	html/houdini_href_e.o
 
-all:		libsundown.so html_blocks
+all:		libsundown.so test html_blocks
 
 .PHONY:		all clean
 
 # libraries
 libsundown.so: $(SUNDOWN_SRC)
 	$(CC) $(LDFLAGS) -shared -Wl $^ -o $@
+
+# executables
+
+test:	examples/test.o $(SUNDOWN_SRC)
+	$(CC) $(LDFLAGS) $^ -o $@
 
 # perfect hashing
 html_blocks: src/html_blocks.h

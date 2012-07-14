@@ -5,3 +5,5 @@ smartypants
 *.exe
 *.bc
 *.js
+*.html
+test
