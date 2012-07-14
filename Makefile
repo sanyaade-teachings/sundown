@@ -19,8 +19,8 @@ DEPDIR=depends
 # "Machine-dependant" options
 #MFLAGS=-fPIC
 
-CFLAGS=-c -g -O3 -fPIC -Wall -Wsign-compare -Isrc -Ihtml
-LDFLAGS=-g -O3 -Wall -Werror -s EXPORTED_FUNCTIONS="['_main', '_malloc', '_free', '_str_to_html']"
+CFLAGS=-c -g -fPIC -Wall -Wsign-compare -Isrc -Ihtml
+LDFLAGS=-g -Wall -Werror -s EXPORTED_FUNCTIONS="['_main', '_malloc', '_free', '_str_to_html']"
 CC=emcc
 
 
@@ -33,7 +33,8 @@ SUNDOWN_SRC=\
 	html/html.o \
 	html/html_smartypants.o \
 	html/houdini_html_e.o \
-	html/houdini_href_e.o
+	html/houdini_href_e.o \
+	examples/test.o
 
 all:		libsundown.so html_blocks
 

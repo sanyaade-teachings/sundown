@@ -4,4 +4,5 @@ make clean
 echo "Making native"
 make -f Makefile.native
 echo "Saving native output"
-./test data.md > output.html
+./test data.md > output.native.html
+
