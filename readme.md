@@ -10,4 +10,4 @@ The master branch now contains all code and build files. Other branches are no l
 
 `./native.sh` builds the native library and a test executable
 
-To increase the chance of a working emscripten build, use unmodified emcc with bundled closure.
+Requires latest emcc on incoming branch.
