@@ -20,7 +20,7 @@ DEPDIR=depends
 #MFLAGS=-fPIC
 
 CFLAGS=-c -g -fPIC -Wall -Wsign-compare -Isrc -Ihtml
-LDFLAGS=-g -Wall -Werror
+LDFLAGS=-g -Wall -Werror -s EXPORTED_FUNCTIONS="['_main', '_malloc', '_free', '_str_to_html']"
 CC=emcc
 
 
@@ -33,7 +33,8 @@ SUNDOWN_SRC=\
 	html/html.o \
 	html/html_smartypants.o \
 	html/houdini_html_e.o \
-	html/houdini_href_e.o
+	html/houdini_href_e.o \
+	examples/test.o
 
 all:		libsundown.so html_blocks
 
@@ -52,7 +53,7 @@ src/html_blocks.h: html_block_names.txt
 
 # housekeeping
 clean:
-	rm -f src/*.o html/*.o examples/*.o *.js *.bc *.html
+	rm -f src/*.o html/*.o examples/*.o *.js *.bc
 	rm -f libsundown.so libsundown.so.1 sundown smartypants
 	rm -f sundown.exe smartypants.exe
 	rm -rf $(DEPDIR)
