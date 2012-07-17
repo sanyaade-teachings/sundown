@@ -4,6 +4,5 @@ sundown
 smartypants
 *.exe
 *.bc
-*.js
+/*.js
 *.html
-test
