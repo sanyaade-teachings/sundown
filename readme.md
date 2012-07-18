@@ -1,4 +1,4 @@
-The master branch now contains all code and build files. Other branches are no longer used.
+- Based on [11d2add5b43e6c209ca4f7c4f326832f0ba63f70](https://github.com/tanoku/sundown/commit/11d2add5b43e6c209ca4f7c4f326832f0ba63f70)
 
 #### 3 Make files.
 
