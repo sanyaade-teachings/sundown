@@ -13,5 +13,5 @@
 Requires latest emcc on incoming branch.
 
 
-sudo apt-get install -y gperf
+> sudo apt-get install -y gperf
 gperf -N find_block_tag -H hash_block_tag -C -c -E --ignore-case html_block_names.txt > ./src/html_blocks.h
